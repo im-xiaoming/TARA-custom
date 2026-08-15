@@ -35,7 +35,7 @@ def load_yml(path: str, loader_type: str = 'default'):
 
     loader = yaml.Loader if (loader_type == "default") else PrettySafeLoader
 
-    with open(path, 'r') as f:
+    with open(path, 'r', encoding='utf-8') as f:
         data = yaml.load(f, Loader=loader)
 
     return data

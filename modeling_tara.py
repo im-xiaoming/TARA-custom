@@ -1,4 +1,5 @@
 import os
+import importlib.util
 import importlib.resources as pkg_resources
 from abc import ABCMeta, abstractmethod
 from typing import Optional, Union, Dict, List
@@ -150,6 +151,9 @@ class BaseModelForTARA(BaseModel):
                 f"GPU compute capability {major}.x does not support FlashAttention-2; "
                 "falling back attn_implementation to 'eager'."
             )
+            return "eager"
+        if importlib.util.find_spec("flash_attn") is None:
+            print("flash_attn is not installed; falling back attn_implementation to 'eager'.")
             return "eager"
         return "flash_attention_2"
 

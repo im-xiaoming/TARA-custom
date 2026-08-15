@@ -210,7 +210,7 @@ class SentembTrainer(Trainer):
             inputs['attention_mask'] = torch.cat([inputs['attention_mask'], inputs['attention_mask']], dim=0)
             del inputs['labels']
 
-        pooler_output = model(output_hidden_states=True, return_dict=True, **inputs).hidden_states[-1][:, -1, :]
+        pooler_output = model(output_hidden_states=True, return_dict=True, **inputs).hidden_states[-1][:, -1, :]  
 
         if self.use_neg_sentence:
             batch_size = pooler_output.size(0)//3

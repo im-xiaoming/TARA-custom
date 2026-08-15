@@ -11,6 +11,7 @@ import pandas as pd
 import PIL
 from PIL import Image, ImageOps, ImageDraw
 from tqdm import tqdm
+import sys
 
 # try:
 #     import librosa
@@ -23,7 +24,7 @@ from IPython.display import Audio, Markdown, display
 try:
     from ipywidgets import Button, HBox, VBox, Text, Label, HTML, widgets
 except:
-    exit("Failed to import ipywidgets. Please install.")
+    sys.exit("Failed to import ipywidgets. Please install.")
 
 from shared.utils.log import tqdm_iterator
 
